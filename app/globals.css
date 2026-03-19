@@ -1,5 +1,6 @@
-@import "tailwindcss";
-@config "../tailwind.config.ts";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 * {
   margin: 0;
@@ -14,9 +15,12 @@
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
+
 .glassmorphism {
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(4px);
@@ -43,27 +47,12 @@
 }
 
 @layer utilities {
-  .home,
-  .home-content,
-  .right-sidebar,
-  .payment-transfer {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  .home::-webkit-scrollbar,
-  .home-content::-webkit-scrollbar,
-  .right-sidebar::-webkit-scrollbar,
-  .payment-transfer::-webkit-scrollbar {
-    display: none;
-  }
-
   .input-class {
     @apply text-[16px] leading-[24px] placeholder:text-[16px] rounded-lg border border-gray-300 text-gray-900 placeholder:text-gray-500;
   }
 
   .sheet-content button {
-    @apply focus:ring-0 focus-visible:ring-transparent focus:ring-offset-0 focus-visible:ring-offset-0 focus-visible:outline-none focus-visible:border-none;
+    @apply focus:ring-0 focus-visible:ring-transparent focus:ring-offset-0 focus-visible:ring-offset-0 focus-visible:outline-none focus-visible:border-none !important;
   }
 
   .text14_padding10 {
@@ -167,28 +156,9 @@
     @apply mb-8 flex w-full flex-nowrap;
   }
 
-  .recent-transactions-tablist::-webkit-scrollbar {
-    width: 3px;
-    height: 3px;
-    border-radius: 2px;
-  }
-
-  .recent-transactions-tablist::-webkit-scrollbar-track {
-    background: #dddddd;
-  }
-
-  .recent-transactions-tablist::-webkit-scrollbar-thumb {
-    background: #5c5c7b;
-    border-radius: 50px;
-  }
-
-  .recent-transactions-tablist::-webkit-scrollbar-thumb:hover {
-    background: #7878a3;
-  }
-
   /* Right sidebar */
   .right-sidebar {
-    @apply hidden h-screen max-h-screen flex-col border-l border-gray-200 xl:flex w-[355px] xl:overflow-y-scroll;
+    @apply hidden h-screen max-h-screen flex-col border-l border-gray-200 xl:flex w-[355px] xl:overflow-y-scroll !important;
   }
 
   .profile-banner {
@@ -354,7 +324,7 @@
   }
 
   .payment-transfer_btn {
-    @apply text-[14px] leading-[20px] w-full bg-bank-gradient font-semibold text-white shadow-form;
+    @apply text-[14px] leading-[20px] w-full bg-bank-gradient font-semibold text-white shadow-form !important;
   }
 
   /* Root Layout */
@@ -392,13 +362,9 @@
     @apply relative size-5 max-xl:w-full max-xl:flex max-xl:justify-center max-xl:items-center;
   }
 
-  .footer_image-mobile {
-    @apply relative size-5;
-  }
-
   /* Sidebar */
   .sidebar {
-    @apply sticky left-0 top-0 flex h-screen w-fit flex-col  justify-between border-r border-gray-200 bg-white pt-8 text-white max-md:hidden sm:p-4 xl:p-6 2xl:w-[355px];
+    @apply sticky left-0 top-0 flex h-screen w-fit flex-col justify-between border-r border-gray-200 bg-white pt-8 text-white max-md:hidden sm:p-4 xl:p-6 2xl:w-[355px];
   }
 
   .sidebar-logo {
