@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fintek Dashboard
 
-## Getting Started
+A financial dashboard built to explore production-grade fintech integrations — Plaid for bank account linking, Dwolla for ACH payment transfers, and Appwrite as the backend. Built while working through how these APIs fit together in a real banking product.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## What It Explores
+
+| Integration | Role |
+|---|---|
+| **Plaid** | OAuth bank account linking, transaction history, balance data |
+| **Dwolla** | ACH fund transfers between linked accounts |
+| **Appwrite** | Auth, database, and server-side session management |
+| **Sentry** | Error monitoring and performance tracking |
+| **Chart.js** | Transaction category breakdowns and spending visualizations |
+
+The goal was understanding how a fintech product wires together identity, bank connectivity, and payment rails — not just calling one API but seeing how the three layers interact.
+
+---
+
+## Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 14 App Router |
+| Language | TypeScript 5 (strict) |
+| Styling | Tailwind CSS + Radix UI |
+| Auth + Backend | Appwrite |
+| Bank Linking | Plaid SDK + react-plaid-link |
+| Payments | Dwolla v2 |
+| Visualization | Chart.js + react-chartjs-2 |
+| Forms | React Hook Form + Zod |
+| Monitoring | Sentry |
+
+---
+
+## Status
+
+This is a sandbox-state learning project. Plaid and Dwolla are connected to test environments with pre-seeded accounts. The dashboard layout and navigation are in place; some components are scaffolded but not fully wired to live API responses.
+
+What works: auth flow, Plaid Link integration, sidebar navigation, transaction category styling, spending breakdown structure.
+
+---
+
+## Running Locally
+
+Requires Appwrite, Plaid sandbox credentials, and Dwolla sandbox credentials.
+
+Create a `.env.local` file in the project root:
+
+```
+APPWRITE_PROJECT_ID=
+APPWRITE_DATABASE_ID=
+APPWRITE_USER_COLLECTION_ID=
+APPWRITE_BANK_COLLECTION_ID=
+APPWRITE_TRANSACTION_COLLECTION_ID=
+APPWRITE_SECRET=
+
+PLAID_CLIENT_ID=
+PLAID_SECRET=
+PLAID_ENV=sandbox
+
+DWOLLA_KEY=
+DWOLLA_SECRET=
+DWOLLA_BASE_URL=https://api-sandbox.dwolla.com
+DWOLLA_ENV=sandbox
+
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```bash
+npm install
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Skills Demonstrated
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Integrating regulated financial APIs (Plaid, Dwolla) with proper OAuth flows
+- Appwrite as a BaaS alternative to a custom backend — auth, collections, and server-side sessions
+- Structuring a multi-service integration where each layer has distinct credentials and environments
+- Tailwind design system with custom category color tokens
+- Sentry wired in from the start, not added as an afterthought
